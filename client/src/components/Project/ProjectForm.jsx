@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import '../../styles/ProjectForm.css';
 
 const ProjectForm = ({ onSubmit, initialData = {} }) => {
-    const [title, setTitle] = useState(initialData.title || '');
-    const [description, setDescription] = useState(initialData.description || '');
+    const [title, setTitle] = useState(initialData?.title || '');
+    const [description, setDescription] = useState(initialData?.description || '');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,7 +14,7 @@ const ProjectForm = ({ onSubmit, initialData = {} }) => {
 
     return (
         <form className="project-form" onSubmit={handleSubmit}>
-            <h2>{initialData.title ? 'Edit Project' : 'Create Project'}</h2>
+            <h2>{initialData?.title ? 'Edit Project' : 'Create Project'}</h2>
             <input
                 type="text"
                 placeholder="Project Title"
@@ -28,7 +28,7 @@ const ProjectForm = ({ onSubmit, initialData = {} }) => {
                 onChange={(e) => setDescription(e.target.value)}
                 required
             ></textarea>
-            <button type="submit">{initialData.title ? 'Update' : 'Create'}</button>
+            <button type="submit">{initialData?.title ? 'Update' : 'Create'}</button>
         </form>
     );
 };

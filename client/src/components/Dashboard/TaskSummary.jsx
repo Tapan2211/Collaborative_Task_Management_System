@@ -6,16 +6,18 @@ import '../../styles/TaskSummary.css';
 
 function TaskSummary() {
     const { projectId } = useParams();
+    console.log('Project ID 000:', projectId);
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchTasks = async () => {
             try {
-                const fetchedTasks = await getTasks(projectId); // Fetch tasks specific to the project
+
+                const fetchedTasks = await getTasks(projectId);
                 setTasks(fetchedTasks);
             } catch (error) {
-                console.error('Error fetching tasks:', error);
+                console.error('Failed to fetch tasks:', error.response?.data || error.message);
             } finally {
                 setLoading(false);
             }
@@ -23,6 +25,7 @@ function TaskSummary() {
 
         fetchTasks();
     }, [projectId]);
+
 
     if (loading) {
         return <p>Loading tasks...</p>;

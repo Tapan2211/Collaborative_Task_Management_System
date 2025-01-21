@@ -41,6 +41,7 @@ const Projects = () => {
 
     // Handle project deletion
     const handleDelete = async (projectId) => {
+        console.log("PID", projectId)
         if (window.confirm('Are you sure you want to delete this project?')) {
             try {
                 await deleteProject(projectId);

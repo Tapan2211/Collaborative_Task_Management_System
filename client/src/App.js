@@ -6,6 +6,7 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
+import TaskSummary from './components/Dashboard/TaskSummary';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/tasks" element={<Tasks />} />
         <Route path="/tasks/:projectId" element={<Tasks />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

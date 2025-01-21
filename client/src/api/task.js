@@ -1,15 +1,28 @@
 import axios from 'axios';
 
-const API_URL = '/api/tasks';
+const API_URL = '/api/v1/tasks';
 
-// Get all tasks for a specific project
 export const getTasks = async (projectId) => {
-    const token = localStorage.getItem('token');
-    const response = await axios.get(`${API_URL}/${projectId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
+    try {
+        const token = localStorage.getItem('token');
+        console.log('Project ID:', projectId); // Debug projectId
+        console.log('API URL:', `${API_URL}/${projectId}`); // Debug full API URL
+
+        if (!projectId) {
+            throw new Error('Invalid projectId: Missing or undefined.');
+        }
+
+        const response = await axios.get(`${API_URL}/${projectId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error in getTasks:', error.response?.data || error.message);
+        throw error;
+    }
 };
+
+
 
 // Create a new task
 export const createTask = async (taskData) => {

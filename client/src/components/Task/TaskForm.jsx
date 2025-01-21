@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import '../../styles/TaskForm.css';
 
 const TaskForm = ({ onSubmit, initialData = {}, users }) => {
-    const [title, setTitle] = useState(initialData.title || '');
-    const [description, setDescription] = useState(initialData.description || '');
-    const [status, setStatus] = useState(initialData.status || 'To-Do');
-    const [deadline, setDeadline] = useState(initialData.deadline || '');
-    const [assignedUser, setAssignedUser] = useState(initialData.assignedUser || '');
+    const [title, setTitle] = useState(initialData?.title || '');
+    const [description, setDescription] = useState(initialData?.description || '');
+    const [status, setStatus] = useState(initialData?.status || 'To-Do');
+    const [deadline, setDeadline] = useState(initialData?.deadline || '');
+    const [assignedUser, setAssignedUser] = useState(initialData?.assignedUser || '');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,7 +15,7 @@ const TaskForm = ({ onSubmit, initialData = {}, users }) => {
 
     return (
         <form className="task-form" onSubmit={handleSubmit}>
-            <h2>{initialData.title ? 'Edit Task' : 'Create Task'}</h2>
+            <h2>{initialData?.title ? 'Edit Task' : 'Create Task'}</h2>
             <input
                 type="text"
                 placeholder="Title"

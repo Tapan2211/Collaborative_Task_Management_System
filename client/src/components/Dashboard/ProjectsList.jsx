@@ -7,6 +7,7 @@ function ProjectsList() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
     useEffect(() => {
         const fetchProjects = async () => {
             try {

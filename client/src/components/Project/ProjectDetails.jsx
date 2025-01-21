@@ -11,6 +11,12 @@ const ProjectDetails = () => {
 
     useEffect(() => {
         const fetchProjectDetails = async () => {
+            if (!projectId) {
+                console.error('Invalid projectId');
+                navigate('/projects');
+                return;
+            }
+
             try {
                 const projects = await getProjects();
                 const projectDetails = projects.find((p) => p._id === projectId);

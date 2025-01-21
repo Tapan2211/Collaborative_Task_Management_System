@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = '/api/projects';
+// const API_URL = '/api/projects';
+const API_URL = '/api/v1/projects';
 
 // Get all projects for the logged-in user
 export const getProjects = async () => {
@@ -31,9 +32,21 @@ export const updateProject = async (projectId, projectData) => {
 
 // Delete a project
 export const deleteProject = async (projectId) => {
-    const token = localStorage.getItem('token');
-    const response = await axios.delete(`${API_URL}/${projectId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
+
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token is missing');
+            return; // Handle accordingly
+        }
+
+        const response = await axios.delete(`${API_URL}/${projectId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log(response.data); // Log the response
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting project:', error);
+        throw error; // or handle the error as needed
+    }
 };

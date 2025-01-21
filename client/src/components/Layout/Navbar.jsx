@@ -26,6 +26,9 @@ const Navbar = () => {
                             <Link to="/projects">Projects</Link>
                         </li>
                         <li>
+                            <Link to="/tasks">Tasks</Link> {/* New Tasks Module Link */}
+                        </li>
+                        <li>
                             <button onClick={handleLogout} className="logout-button">Logout</button>
                         </li>
                     </>
